@@ -5,7 +5,7 @@
 #include <sstream>
 #include "graph.h"
 #include "heap.h"
-#include <unordered_set>
+#include <unordered_map>
 
 using namespace std;
 
@@ -16,16 +16,36 @@ data.txt:  contains 200 nodes, start with the node number followed by many (endn
 
 
 ********************************************/
-/*
+
 int dijkstra(const graph& g, int src, int end){
     
-    unordered_set<int> visited;
+    //we use this number to to represent the initial distance 
+    //from the src to all other nodes
+    long veryLargeNum = 100000;
+    
+    //array keeping track of min cost from src to all other nodes
+    int sol[g.size()];
+    for (int i = 1; i<= g.size(); i++){
+        sol[i] = i==src? 0: veryLargeNum;
+    }
+    
+    //first int: nodes been visited, second int: lin cost to achieve this node
+    unordered_map<int, int> visited;
+    
+    //keep record of achivable nodes.
+    minHeap<node> m;
+    
+        
+    
+    
+    
+    return sol[200];
     
     
     
     
 }
-*/
+
 
 
 int main(){
@@ -57,7 +77,8 @@ int main(){
         
     }
     
-    cout<< g.size();
+    cout<< dijkstra(g,199,50);
+    
     
     
     return 0;

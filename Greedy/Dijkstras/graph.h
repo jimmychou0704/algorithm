@@ -49,7 +49,7 @@ public:
     
     void print(int src);                        //print all neighbors of the node src    
     
-    int size(){return array.size()-1;}
+    int size() const {return array.size()-1;}
 };
 
     graph::graph(int num_of_node):array(num_of_node+1){

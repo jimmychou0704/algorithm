@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 
 
@@ -8,13 +9,17 @@ using namespace std;
 
 template <typename T>
 class minHeap{
-  /*
-  private: 
-        vector <T*> array;
-  */
+  
+  //first int: node data, second int: it's position in the array
+  unordered_map<int, int> positionOfNode;
+  
+  
   public:
         
+        
+        
         vector <T*> array;
+        
         minHeap(){};
         
         ~minHeap(){
