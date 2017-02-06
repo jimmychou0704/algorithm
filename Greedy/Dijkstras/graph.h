@@ -35,7 +35,24 @@ class graph{
 public:    
     vector <node*> array;
 
-    graph(int num_of_node):array(num_of_node+1){
+    graph(int num_of_node);         //constructor: initialize all nodes with cost = 0
+                                    //means the cost of going to the node itself is 0
+    
+
+    
+    ~graph();                       //destructor: delete the pointers in array
+                                    //need to add assign and copy constructor later
+
+    
+    void add_edge(int src, int dest, int cost_); //adding edge from src to dest with cost=cost_
+    
+    
+    void print(int src);                        //print all neighbors of the node src    
+    
+    int size(){return array.size()-1;}
+};
+
+    graph::graph(int num_of_node):array(num_of_node+1){
         //make an array of node pointers, array[0] is dummy
         // the fisrt element  in each array[k] is itself, so cost = 0
                 for (int k = 0; k< num_of_node+1; k++){
@@ -47,9 +64,8 @@ public:
                 }
     }
     
-
     
-    ~graph(){
+    graph::~graph(){
         for ( auto k: array ){
             node* curr = k;
             while (curr){
@@ -62,9 +78,7 @@ public:
         
     }
     
-
-    
-    void add_edge(int src, int dest, int cost_){
+   void graph::add_edge(int src, int dest, int cost_){
         //constructing a new node pointer
         
         node* v = new node;
@@ -83,7 +97,7 @@ public:
         
     }
     
-    void print(int src){
+    void graph:: print(int src){
         node* curr = array[src];
         if (curr){
             cout<< "node " <<src <<" is connecting to "<< endl;
@@ -95,4 +109,4 @@ public:
         else cout<<" not going anywhere "<< endl;
         
     }
-};
+    

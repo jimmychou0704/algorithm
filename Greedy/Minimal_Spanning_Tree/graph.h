@@ -95,4 +95,6 @@ public:
         else cout<<" not going anywhere "<< endl;
         
     }
+    
+    int size(){ return array.size()-1;}
 };

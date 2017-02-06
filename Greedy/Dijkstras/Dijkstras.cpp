@@ -5,6 +5,7 @@
 #include <sstream>
 #include "graph.h"
 #include "heap.h"
+#include <unordered_set>
 
 using namespace std;
 
@@ -15,6 +16,17 @@ data.txt:  contains 200 nodes, start with the node number followed by many (endn
 
 
 ********************************************/
+/*
+int dijkstra(const graph& g, int src, int end){
+    
+    unordered_set<int> visited;
+    
+    
+    
+    
+}
+*/
+
 
 int main(){
     
@@ -45,7 +57,7 @@ int main(){
         
     }
     
-    g.print(1);
+    cout<< g.size();
     
     
     return 0;
