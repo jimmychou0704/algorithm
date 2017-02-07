@@ -17,7 +17,9 @@ data.txt:  contains 200 nodes, start with the node number followed by many (endn
 
 ********************************************/
 
-int dijkstra(const graph& g, int src, int end){
+//return the whole sol int eh form of int array
+
+int* dijkstra(const graph& g, int src){
     
     //we use this number to to represent the initial distance 
     //from the src to all other nodes
@@ -41,7 +43,9 @@ int dijkstra(const graph& g, int src, int end){
     
     int t = 0;
     
-    while ( t< 200){
+    
+    //we only run through g.size()-1, because the last node has nowhere to go
+    while ( t< g.size()-1){
         visited.insert(curr->data);
         //add all neighbors of curr node into the heap m
         //the cost will be the sum of "cost to curr" + "curr to neighbor"
@@ -78,9 +82,9 @@ int dijkstra(const graph& g, int src, int end){
     }
         
     
+    int* sol_array = sol;
     
-    
-    return visited.size();
+    return sol_array;
     
     
     
@@ -118,7 +122,14 @@ int main(){
         
     }
     
-    cout<< dijkstra(g,199,50);
+    
+    //For example, ew can compute the min cost path from node 1 to several other nodes
+    vector <int> question {7,37,59,82,99,115,133,165,188,197};
+    vector <int>::iterator it;
+    
+    for (it = question.begin(); it!= question.end(); it++)
+            cout<< dijkstra(g, 1)[*it]<< ", ";
+    cout<< endl;
     
    
     
