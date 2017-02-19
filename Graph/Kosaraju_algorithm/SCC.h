@@ -49,7 +49,7 @@ graph reverse_graph(const graph& original){
 
 
 
-//a utility functoin used by DFS
+//A utility functoin used by DFS
 void DFS_local(const graph& g, int v, vector<int>& finishedTime, unordered_set<int>& visited){
     
     //mark visited
