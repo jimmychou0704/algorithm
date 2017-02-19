@@ -34,7 +34,7 @@ void graph::printEdge(int v){
     for (auto k: adj[v]) cout<< k<< " ";
 }
 
-//revere the arrows of the graph
+//utility functoin to revere the arrows of the graph
 
 graph reverse_graph(const graph& original){
     graph g(original.size());
