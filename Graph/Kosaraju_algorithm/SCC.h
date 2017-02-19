@@ -31,8 +31,22 @@ void graph::addEdge(int v, int w){
 }
 
 void graph::printEdge(int v){
-    for (auto k: adj[v]) cout<< k<< endl;
+    for (auto k: adj[v]) cout<< k<< " ";
 }
+
+//revere the arrows of the graph
+
+graph reverse_graph(const graph& original){
+    graph g(original.size());
+    for (int i = 1; i<= original.size(); i++){
+        for (auto k: original.adj[i]){
+            g.addEdge(k,i);
+        }
+    }
+    
+    return g;
+}
+
 
 
 //a utility functoin used by DFS
@@ -67,7 +81,7 @@ void DFS_local(const graph& g, int v, vector<int>& finishedTime, unordered_set<i
 
 
 
-void first_DFS(const graph& g){
+vector<int> first_DFS(const graph& g){
     
         //two containers
         vector<int> finishedTime;
@@ -81,5 +95,5 @@ void first_DFS(const graph& g){
         }
     
     
-        for (auto k: finishedTime)cout<< k<< endl;
+        return finishedTime;
 }
