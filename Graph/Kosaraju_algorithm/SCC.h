@@ -97,3 +97,50 @@ vector<int> first_DFS(const graph& g){
     
         return finishedTime;
 }
+
+//second_DFS_local: a utility function used by the second DFS
+//to compute number of nodes in a connected component
+
+void second_DFS_local(int v, int size, unordered_set<int> visited, const graph& g,\
+                      vector<int>& size_of_SCC){
+        
+        visited.insert(v);      //marked current point visited
+        size += 1;
+        
+        for (auto k: g.adj[v]){
+            if (visited.find(k) == visited.end()) {
+                second_DFS_local(k, size, visited, g, size_of_SCC);
+            }
+        }
+        
+        size_of_SCC.push_back(size);
+        
+}
+
+
+
+//Second DFS
+//return size of each strong connect component
+
+
+vector <int> second_DFS(const graph& g, vector<int>& finishedTime){
+    vector <int> size_of_SCC;
+    unordered_set<int> visited;
+    
+    while (!finishedTime.empty()){
+        int v = finishedTime.back();
+        
+        if (visited.find(v) == visited.end()){
+            int size = 0;
+            second_DFS_local(v, size, visited, g, size_of_SCC);
+            
+        }
+        
+        finishedTime.pop_back();
+        
+    }
+    
+    
+    
+    
+}
