@@ -21,6 +21,13 @@ using namespace::std;
 
 int main(){
     
+    /***************************
+     * 
+     *  Frirst example of a small graph printing out all the strong 
+     *  connected component
+     * 
+    ****************************/
+    
     graph g(5);
     g.addEdge(2, 1);
     g.addEdge(1, 3);
@@ -35,8 +42,17 @@ int main(){
     graph new_graph = reverse_graph(g);
     
     //second_DFS following the order of finishedTime
-    cout<< " Stong connected components are"<< endl;
-    second_DFS(new_graph,finishedTime);
+    cout<< "Stong connected components are"<< endl;
+    //second_DFS(new_graph,finishedTime);
     
+    /***************************
+     * 
+     *  Second example of a very large graph printing out 
+     * all the strong size of all connected components.
+     * 
+    ****************************/
+    vector<int> size_of_SCC = count_SCC_size(new_graph,finishedTime);
+    
+    for (auto k: size_of_SCC) cout<< k<< " ";
     return 0;
 }

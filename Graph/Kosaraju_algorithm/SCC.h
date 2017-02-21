@@ -101,7 +101,7 @@ vector<int> first_DFS(const graph& g){
 //second_DFS_local: a utility function used by the second DFS
 //to compute number of nodes in a connected component
 
-void second_DFS_local(int v, unordered_set<int>& visited, const graph& g){
+void second_DFS_local(int v,  unordered_set<int>& visited, const graph& g){
         
         visited.insert(v);      //marked current point visited
         cout<< v<< " ";
@@ -139,8 +139,47 @@ void second_DFS(const graph& g, vector<int>& finishedTime){
         //else finishedTime.pop_back();
         
     }
-    
-    
-    
-    
+}
+
+
+int count_SCC_size_local(int v, unordered_set<int>& visited,\
+                           const graph& g){
+        visited.insert(v);      //mark viisted
+        int size = 1;              //size of this component = 1, before adding other 
+                                   //adj nodes    
+        
+                                
+        for (auto k: g.adj[v]){
+                if (visited.find(k) == visited.end()) 
+                    size += count_SCC_size_local(k, visited,g);          
+        }
+        
+        return size;                    
+                            
+}
+
+//use DFS  method to compute the size of each strong connected component
+
+vector <int> count_SCC_size(const graph& g, vector<int> finishedTime){
+        vector<int> sizeOfSCC;
+        unordered_set<int> visited;
+        
+        
+        while (!finishedTime.empty()){
+            
+            //we start from the last finished node from the first round
+            int v = finishedTime.back();
+            finishedTime.pop_back();
+            
+            //we do something only whatn v has not been visited
+            if (visited.find(v) == visited.end()){
+                int size = count_SCC_size_local(v, visited, g);
+                sizeOfSCC.push_back(size);
+                
+            }
+            
+            
+            
+        }
+    return sizeOfSCC;
 }
