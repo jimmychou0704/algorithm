@@ -17,11 +17,11 @@ data.txt:  contains 200 nodes, start with the node number followed by many (endn
 
 ********************************************/
 
-//return the whole sol int eh form of int array
+//return the whole sol in the form of int array
 
 int* dijkstra(const graph& g, int src){
     
-    //we use this number to to represent the initial distance 
+    //we use this number  to represent the initial distance 
     //from the src to all other nodes
     long veryLargeNum = 100000;
     
